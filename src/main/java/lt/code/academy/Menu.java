@@ -9,10 +9,7 @@ public class Menu {
 
     Scanner scanner = new Scanner(System.in);
     ObjectMapper mapper = new ObjectMapper();
-
-
     WriteReadFiles writeRead = new WriteReadFiles(mapper);
-
     List<Person> persons = writeRead.readFile();
 
     void mainMenu (){
@@ -38,7 +35,6 @@ public class Menu {
                 System.out.println("Exit");
             }
             default -> System.out.println("No such action");
-
         }
     }
     Person createNewPerson (){
