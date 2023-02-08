@@ -2,6 +2,7 @@ package lt.code.academy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,6 +12,7 @@ public class Menu {
     ObjectMapper mapper = new ObjectMapper();
     WriteReadFiles writeRead = new WriteReadFiles(mapper);
     List<Person> persons = writeRead.readFile();
+
 
     void mainMenu (){
         String action;
@@ -23,7 +25,7 @@ public class Menu {
             action = scanner.nextLine();
             mainMenuAction(action);
 
-        } while (!action.equals(0));
+        } while (!action.equals("0"));
     }
 
     void mainMenuAction(String action){
@@ -62,6 +64,9 @@ public class Menu {
     }
 
     void printList (){
+        if (persons.size()==0){
+            System.out.println("List is empty");
+        }
         persons.forEach(System.out::println);
     }
 

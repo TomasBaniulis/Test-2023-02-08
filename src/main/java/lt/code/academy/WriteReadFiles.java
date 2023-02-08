@@ -18,7 +18,7 @@ public class WriteReadFiles {
         this.mapper = mapper;
     }
 
-    void writeToFile ( Object object){
+    void writeToFile ( List <Person> persons){
         String fileName = "Persons.json";
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         File file = new File(fileName);
@@ -26,7 +26,7 @@ public class WriteReadFiles {
             if (!file.exists()){
                 file.createNewFile();
             }
-            mapper.writeValue(file,object);
+            mapper.writeValue(file,persons);
         }catch (IOException e){
             System.out.printf("Can't create file %s: %s%n:", fileName, e.getMessage());
         }
