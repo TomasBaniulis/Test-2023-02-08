@@ -56,7 +56,7 @@ public class Menu {
     void addPersonToList (){
         Person person = createNewPerson();
         for (Person p : persons ) {
-            if (p.getId().equals(person.Id)){
+            if (p.getId().equals(person.getId())){
                 System.out.printf("Person with ID: %s exist.", person.getId());
                 return;
             }
