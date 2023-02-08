@@ -1,19 +1,19 @@
 package lt.code.academy;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
 
-    Scanner scanner;
-    List<Person> persons;
-    WriteReadFiles writeRead;
+    Scanner scanner = new Scanner(System.in);
+    ObjectMapper mapper = new ObjectMapper();
 
-    public Menu(Scanner scanner, List<Person> persons, WriteReadFiles writeRead) {
-        this.scanner = scanner;
-        this.persons = persons;
-        this.writeRead = writeRead;
-    }
+
+    WriteReadFiles writeRead = new WriteReadFiles(mapper);
+
+    List<Person> persons = writeRead.readFile();
 
     void mainMenu (){
         String action;
@@ -31,8 +31,8 @@ public class Menu {
 
     void mainMenuAction(String action){
         switch (action){
-            case "1" -> addPersonToList(persons);
-            case "2" -> printList(persons);
+            case "1" -> addPersonToList();
+            case "2" -> printList();
             case "0" -> {
                 writeRead.writeToFile(persons);
                 System.out.println("Exit");
@@ -53,7 +53,7 @@ public class Menu {
 
     }
 
-    void addPersonToList (List<Person> persons){
+    void addPersonToList (){
         Person person = createNewPerson();
         for (Person p : persons ) {
             if (p.getId().equals(person.Id)){
@@ -64,7 +64,7 @@ public class Menu {
         }
     }
 
-    void printList (List<Person> persons){
+    void printList (){
         persons.forEach(System.out::println);
     }
 
