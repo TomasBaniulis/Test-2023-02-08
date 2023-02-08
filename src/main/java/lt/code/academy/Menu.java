@@ -61,6 +61,7 @@ public class Menu {
                 return;
             }
             persons.add(person);
+            System.out.println("Person was added successfully");
         }
     }
 
