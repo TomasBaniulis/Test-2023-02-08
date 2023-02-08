@@ -8,11 +8,16 @@ import java.io.IOException;
 import java.util.List;
 
 
-public class WriteFiles {
+public class WriteReadFiles {
 
     ObjectMapper mapper;
 
-    void writeToFile (String fileName, Object object){
+    public WriteReadFiles(ObjectMapper mapper) {
+        this.mapper = mapper;
+    }
+
+    void writeToFile ( Object object){
+        String fileName = "Persons.json";
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         File file = new File(fileName);
         try{
@@ -26,8 +31,13 @@ public class WriteFiles {
 
     }
 
-    List<Person> readFile  (String fileName){
+    List<Person> readFile  (){
+        String fileName = "persons.json";
+       try {
 
+       }catch (IOException e){
+
+       }
     }
 
 
