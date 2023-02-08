@@ -1,10 +1,12 @@
 package lt.code.academy;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -33,11 +35,20 @@ public class WriteReadFiles {
 
     List<Person> readFile  (){
         String fileName = "persons.json";
+        List<Person> persons = new ArrayList<>();
+        File file = new File(fileName);
+        if (!file.exists()){
+            return persons;
+        }
        try {
+           persons = mapper.readValue(file, new TypeReference<>() {});
+           return  persons;
 
        }catch (IOException e){
+           System.out.printf("Can't read file %s: %s%n", fileName, e.getMessage() );
 
        }
+       return persons;
     }
 
 

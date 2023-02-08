@@ -12,13 +12,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         ObjectMapper mapper = new ObjectMapper();
         WriteReadFiles writeFiles = new WriteReadFiles(mapper);
-        List<Person> persons = new ArrayList<>();
+        List<Person> persons = writeFiles.readFile();
         Menu menu = new Menu(scanner, persons, writeFiles);
 
     }
 
-    private void menu (){
-
-    }
 
 }
